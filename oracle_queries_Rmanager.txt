@@ -1,0 +1,10 @@
+1. create user Rmanager identified by mca;
+2. grant connect,resource to Rmanager;
+
+3.create tables:
+create table login(username varchar2(20) primary key, password varchar2(16));
+create table item_categories(category varchar2(15) primary key);
+create table menu(category varchar2(15) references item_categories, i_name varchar2(25) primary key, price number);
+create table orders(order_id number primary key, cost number, c_name varchar2(20), c_phone number(10), served varchar2(3));
+create table order_items(i_number number,order_id number references orders,i_name varchar2(25),price number, quantity number);
+create table order_queue(order_id number references orders,c_name varchar2(20),c_phone number);
